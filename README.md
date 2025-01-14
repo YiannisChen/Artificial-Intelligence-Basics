@@ -10,3 +10,7 @@ It implements a Gobang game with an AI opponent. The AI uses the Negamax algorit
 
 This project implements a decision tree classifier using the `sklearn` library, with a focus on calculating entropy as a key part of decision tree algorithms like ID3. It also demonstrates how to preprocess a dataset, train a decision tree model, and compute the information entropy of the dataset’s classification labels.
 
+4. Neural Network for Handwritten Digit Recognition
+
+This project implements a neural network for recognizing handwritten digits from the dataset. The neural network is designed with adjustable parameters to explore the effects of different parameters on model performance. It allows for experiments with varying learning rates, hidden layer sizes, number of epochs, and dataset sizes.
+
