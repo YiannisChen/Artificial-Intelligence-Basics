@@ -1,0 +1,1 @@
+There are a total of 24 data entries, with the column titles being as follows: age, prescript, astigmatic, tearRate, and class. This means that the first column represents age, the second column represents prescript, the third column indicates whether the person has astigmatism, the fourth column represents tear rate, and the fifth column is the final classification label.
