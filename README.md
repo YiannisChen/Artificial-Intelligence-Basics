@@ -1,3 +1,4 @@
+This repository is created to record the experiments conducted in the Introduction to Artificial Intelligence course
 1. 8-Puzzle Solver
    
 It is an 8-puzzle solver that uses BFS, DFS, and A* algorithms to find solutions. Users can shuffle the puzzle, solve it using different algorithms, and upload a custom background image for the puzzle.
