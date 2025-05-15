@@ -13,5 +13,3 @@ Hey there! 👋 This repo is a collection of my AI course experiments and classi
 - **Digit Recognition**: Neural networks (including LeNet and a two-layer NN) on MNIST
 - **SVM**: Support Vector Machines for classification tasks
 - **Clustering**: K-means and DBSCAN clustering on toy datasets
-
-Each folder has code, some results, and a few fun visualizations. Tweak the code, run some experiments, and see what happens!
