@@ -1,29 +1,17 @@
 # Introduction to Artificial Intelligence - Experiment Repository
 
-This repository is created to record the experiments conducted in the *Introduction to Artificial Intelligence* course.
+Hey there! 👋 This repo is a collection of my AI course experiments and classic projects. Here's a quick tour of what's inside:
 
-## 1. 8-Puzzle Solver
+## Classic AI Games & Algorithms (`Intro-to-AI/`)
+- 8-Puzzle solver (BFS, DFS, A*)
+- Gobang (Five-in-a-row) with a simple AI
+- Decision tree classifier (entropy, ID3)
+- A basic neural net for digit recognition
 
-It is an 8-puzzle solver that uses **BFS, DFS, and A*** algorithms to find solutions. Users can:  
-- Shuffle the puzzle  
-- Solve it using different algorithms  
-- Upload a custom background image for the puzzle  
+## Machine Learning Assignments (`Machine-Learning/`)
+- **Regression**: Linear and logistic regression, with cool plots for learning rates and convergence
+- **Digit Recognition**: Neural networks (including LeNet and a two-layer NN) on MNIST
+- **SVM**: Support Vector Machines for classification tasks
+- **Clustering**: K-means and DBSCAN clustering on toy datasets
 
-## 2. Gobang AI with Alpha-Beta Pruning
-
-This project implements a **Gobang game** with an AI opponent. The AI uses the **Negamax algorithm with Alpha-Beta Pruning** to optimize its move selection. The project is based on the algorithm from [colingogogo](https://github.com/colingogogo), with some modifications for learning purposes.
-
-## 3. Decision Tree Entropy and Classification
-
-This project implements a **decision tree classifier** using the `sklearn` library, focusing on entropy calculation as a key part of decision tree algorithms like **ID3**. It demonstrates:
-- How to preprocess a dataset  
-- Training a decision tree model  
-- Computing the **information entropy** of the dataset’s classification labels  
-
-## 4. Neural Network for Handwritten Digit Recognition
-
-This project implements a **neural network** for recognizing handwritten digits from a dataset. The network is designed with adjustable parameters to explore their effects on model performance. Experiments include:
-- Varying learning rates  
-- Changing hidden layer sizes  
-- Adjusting the number of epochs  
-- Using different dataset sizes  
+Each folder has code, some results, and a few fun visualizations. Tweak the code, run some experiments, and see what happens!
