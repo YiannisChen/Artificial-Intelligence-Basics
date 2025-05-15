@@ -2,7 +2,7 @@
 
 Hey there! 👋 This repo is a collection of my AI course experiments and classic projects. Here's a quick tour of what's inside:
 
-## Classic AI Games & Algorithms (`Intro-to-AI/`)
+## Introduction to AI Assignments (`Intro-to-AI/`)
 - 8-Puzzle solver (BFS, DFS, A*)
 - Gobang (Five-in-a-row) with a simple AI
 - Decision tree classifier (entropy, ID3)
