@@ -9,37 +9,9 @@ if not os.path.exists('results'):
     os.makedirs('results')
 
 def dist(a, b):
-    """
-    Calculate Euclidean distance between two points.
-    
-    Parameters:
-    a : tuple
-        First point coordinates (x, y)
-    b : tuple
-        Second point coordinates (x, y)
-        
-    Returns:
-    float
-        Euclidean distance between points a and b
-    """
     return math.sqrt(math.pow(a[0] - b[0], 2) + math.pow(a[1] - b[1], 2))
 
 def DBSCAN(D, eps, MinPts):
-    """
-    Perform DBSCAN clustering.
-    
-    Parameters:
-    D : list of tuples
-        Dataset of points
-    eps : float
-        Maximum distance between points to be considered neighbors
-    MinPts : int
-        Minimum number of points required to form a cluster
-        
-    Returns:
-    C : list of lists
-        List of clusters, where each cluster is a list of points
-    """
     # Initialize core objects set T, cluster number k, cluster set C, and unvisited set P
     T = set()
     k = 0
@@ -84,19 +56,6 @@ def DBSCAN(D, eps, MinPts):
     return C
 
 def calculate_cluster_density(C, eps):
-    """
-    Calculate the density of each cluster.
-    
-    Parameters:
-    C : list of lists
-        List of clusters, where each cluster is a list of points
-    eps : float
-        The eps value used for clustering
-        
-    Returns:
-    list
-        List of densities for each cluster
-    """
     densities = []
     for cluster in C:
         if len(cluster) == 0:
@@ -116,9 +75,6 @@ def calculate_cluster_density(C, eps):
     return densities
 
 def draw_clusters(C, eps, minpts, densities=None):
-    """
-    Visualize the clustering results with enhanced information and save to file.
-    """
     colors = ['r', 'y', 'g', 'b', 'c', 'k', 'm']
     plt.figure(figsize=(12, 8))
     
@@ -168,9 +124,6 @@ def draw_clusters(C, eps, minpts, densities=None):
     plt.close()
 
 def experiment_with_parameters(dataset, eps_values, minpts_values):
-    """
-    Run DBSCAN with different parameter combinations and analyze results.
-    """
     print("\nDBSCAN Parameter Analysis")
     print("========================")
     

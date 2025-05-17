@@ -11,19 +11,7 @@ if not os.path.exists('results'):
     os.makedirs('results')
 
 def find_closest_centroids(X, centroids):
-    """
-    Find the closest centroid for each data point in X.
     
-    Parameters:
-    X : array-like, shape (n_samples, n_features)
-        The input data points
-    centroids : array-like, shape (k, n_features)
-        The current centroids
-        
-    Returns:
-    idx : array-like, shape (n_samples,)
-        The index of the closest centroid for each data point
-    """
     # Get number of samples and number of centroids
     m = X.shape[0]
     k = centroids.shape[0]
@@ -47,21 +35,7 @@ def find_closest_centroids(X, centroids):
     return idx
 
 def compute_centroids(X, idx, k):
-    """
-    Compute new centroids based on the current cluster assignments.
     
-    Parameters:
-    X : array-like, shape (n_samples, n_features)
-        The input data points
-    idx : array-like, shape (n_samples,)
-        The cluster assignments for each data point
-    k : int
-        The number of clusters
-        
-    Returns:
-    centroids : array-like, shape (k, n_features)
-        The new centroids
-    """
     # Get number of features
     n = X.shape[1]
     
@@ -83,25 +57,7 @@ def compute_centroids(X, idx, k):
     return centroids
 
 def run_k_means(X, initial_centroids, max_iters=10, plot_progress=False):
-    """
-    Run the K-means algorithm.
     
-    Parameters:
-    X : array-like, shape (n_samples, n_features)
-        The input data points
-    initial_centroids : array-like, shape (k, n_features)
-        The initial centroids
-    max_iters : int, optional (default=10)
-        Maximum number of iterations
-    plot_progress : bool, optional (default=False)
-        Whether to plot the progress of the algorithm
-        
-    Returns:
-    idx : array-like, shape (n_samples,)
-        The final cluster assignments
-    centroids : array-like, shape (k, n_features)
-        The final centroids
-    """
     # Get number of samples and features
     m, n = X.shape
     k = initial_centroids.shape[0]
@@ -143,19 +99,7 @@ def run_k_means(X, initial_centroids, max_iters=10, plot_progress=False):
     return idx, centroids
 
 def init_centroids(X, k):
-    """
-    Randomly initialize k centroids from the data points.
     
-    Parameters:
-    X : array-like, shape (n_samples, n_features)
-        The input data points
-    k : int
-        The number of clusters
-        
-    Returns:
-    centroids : array-like, shape (k, n_features)
-        The randomly initialized centroids
-    """
     m, n = X.shape
     centroids = np.zeros((k, n))
     idx = np.random.randint(0, m, k)
@@ -165,9 +109,7 @@ def init_centroids(X, k):
     return centroids
 
 def plot_clusters(X, idx, centroids, title, filename):
-    """
-    Plot clusters and save to file
-    """
+    
     plt.figure(figsize=(10, 8))
     colors = ['r', 'g', 'b', 'c', 'm', 'y', 'k']
     
@@ -190,9 +132,7 @@ def plot_clusters(X, idx, centroids, title, filename):
     plt.close()
 
 def plot_elbow_method(SSE_values):
-    """
-    Plot elbow method results and save to file
-    """
+    
     plt.figure(figsize=(10, 6))
     plt.plot(range(1, len(SSE_values) + 1), SSE_values, 'o-')
     plt.xlabel('Number of Clusters (k)')
@@ -205,9 +145,7 @@ def plot_elbow_method(SSE_values):
     plt.close()
 
 def plot_clusters_comparison(X, initial_centroids, final_centroids, final_idx, title, filename):
-    """
-    Plot comparison between initial and final states
-    """
+    
     plt.figure(figsize=(15, 6))
     
     # Plot initial state

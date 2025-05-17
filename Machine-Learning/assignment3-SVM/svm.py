@@ -7,18 +7,6 @@ import sys
 import time
 
 class SMO:
-    """Sequential Minimal Optimization (SMO) implementation for SVM training.
-    
-    This class implements the SMO algorithm for training Support Vector Machines
-    with both linear and RBF (Gaussian) kernels. It includes early stopping and
-    convergence checks for efficient training.
-    
-    Attributes:
-        C (float): Penalty parameter for misclassification
-        tol (float): Tolerance for optimization convergence
-        kernel (str): Type of kernel ('linear' or 'rbf')
-        gamma (float): Parameter for RBF kernel
-    """
     
     def __init__(self, C, tol, kernel='rbf', gamma=None):
         """Initialize SMO algorithm parameters.
@@ -178,14 +166,7 @@ class SMO:
         return 1
 
     def _optimize_alpha_i(self, i):
-        """Optimize alpha_i by finding and optimizing with alpha_j.
         
-        Args:
-            i (int): Index of alpha to optimize
-            
-        Returns:
-            int: 1 if optimization was successful, 0 otherwise
-        """
         alpha, b, X, y, E = self.args
 
         if 0 < alpha[i] < self.C:
@@ -221,12 +202,8 @@ class SMO:
         return 0
 
     def train(self, X_train, y_train):
-        """Train SVM using SMO algorithm.
+        #Train SVM using SMO algorithm.
         
-        Args:
-            X_train (ndarray): Training features
-            y_train (ndarray): Training labels
-        """
         m, _ = X_train.shape
         y_train = np.where(y_train == 0, -1, 1)
 
@@ -273,37 +250,19 @@ class SMO:
         self.sv_b = b[0]
 
     def _predict_one(self, x):
-        """Predict class for a single input.
+        #redict class for a single input.
         
-        Args:
-            x (ndarray): Input vector
-            
-        Returns:
-            float: Predicted class (-1 or 1)
-        """
         k = self.K(self.sv_X, x)
         return np.sum(self.sv_y * self.sv_alpha * k) + self.sv_b
 
     def predict(self, X_test):
-        """Predict classes for multiple inputs.
+        #Predict classes for multiple inputs.
         
-        Args:
-            X_test (ndarray): Test features
-            
-        Returns:
-            ndarray: Predicted classes (-1 or 1)
-        """
         return np.sign(np.array([self._predict_one(x) for x in X_test]))
 
     def plot_decision_boundary(self, X, y, title=None, save_path=None):
-        """Plot decision boundary and support vectors.
+        #Plot decision boundary and support vectors.
         
-        Args:
-            X (ndarray): Input features
-            y (ndarray): True labels
-            title (str): Plot title
-            save_path (str): Path to save the plot
-        """
         plt.figure(figsize=(10, 8))
         
         # Plot decision boundary
@@ -331,17 +290,12 @@ class SMO:
         plt.close()
 
 def ensure_output_dir():
-    """Create output directory if it doesn't exist."""
+    #Create output directory if it doesn't exist."""
     if not os.path.exists('output'):
         os.makedirs('output')
 
 def experiment_linear_svm(data_path, C_values=[0.1, 1, 10, 100]):
-    """Run experiments with linear SVM.
-    
-    Args:
-        data_path (str): Path to dataset
-        C_values (list): List of C values to test
-    """
+    #Run experiments with linear SVM.
     data = pd.read_csv(data_path)
     X = data[['X1', 'X2']].values
     y = data['y'].values
@@ -362,13 +316,7 @@ def experiment_linear_svm(data_path, C_values=[0.1, 1, 10, 100]):
         )
 
 def experiment_rbf_svm(data_path, C_values=[0.1, 1, 10, 100], gamma_values=[0.01, 0.1, 1, 10]):
-    """Run experiments with RBF SVM.
-    
-    Args:
-        data_path (str): Path to dataset
-        C_values (list): List of C values to test
-        gamma_values (list): List of gamma values to test
-    """
+    #Run experiments with RBF SVM.
     data = pd.read_csv(data_path)
     X = data[['X1', 'X2']].values
     y = data['y'].values
@@ -390,13 +338,8 @@ def experiment_rbf_svm(data_path, C_values=[0.1, 1, 10, 100], gamma_values=[0.01
             )
 
 def experiment_letter_recognition(data_path, C_values=[1, 10, 100], gamma_values=[0.01, 0.1, 1]):
-    """Run experiments with letter recognition.
+    #Run experiments with letter recognition.
     
-    Args:
-        data_path (str): Path to dataset
-        C_values (list): List of C values to test
-        gamma_values (list): List of gamma values to test
-    """
     X = np.genfromtxt(data_path, delimiter=',', usecols=range(1, 17))
     y = np.genfromtxt(data_path, delimiter=',', usecols=0, dtype=str)
     y = np.where(y == 'C', 1, -1)
