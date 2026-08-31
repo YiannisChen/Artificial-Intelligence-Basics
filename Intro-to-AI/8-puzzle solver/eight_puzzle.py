@@ -293,13 +293,13 @@ class PuzzleGUI:
 
     def bfs(self, start_state):
         queue = deque()
-        queue.append((start_state, []))
+        queue.append((start_state, [start_state]))
         visited = set()
         visited.add(tuple(start_state))
         while queue:
             current_state, path = queue.popleft()
             if current_state == TARGET_STATE:
-                return path + [current_state], len(path), len(visited)
+                return path, len(path) - 1, len(visited)
             zero_idx = current_state.index(0)
             for move in self.get_valid_moves(zero_idx):
                 new_state = current_state[:]
@@ -312,15 +312,15 @@ class PuzzleGUI:
 
     def dfs(self, start_state):
         stack = []
-        stack.append((start_state, []))
+        stack.append((start_state, [start_state]))
         visited = set()
         visited.add(tuple(start_state))
         max_depth = 50  # Set a reasonable limit to prevent infinite loops
         while stack:
             current_state, path = stack.pop()
             if current_state == TARGET_STATE:
-                return path + [current_state], len(path), len(visited)
-            if len(path) >= max_depth:
+                return path, len(path) - 1, len(visited)
+            if len(path) - 1 >= max_depth:
                 continue
             zero_idx = current_state.index(0)
             for move in reversed(self.get_valid_moves(zero_idx)):
@@ -342,13 +342,13 @@ class PuzzleGUI:
 
     def a_star(self, start_state):
         heap = []
-        heapq.heappush(heap, (self.manhattan_distance(start_state), start_state, []))
+        heapq.heappush(heap, (self.manhattan_distance(start_state), start_state, [start_state]))
         visited = set()
         visited.add(tuple(start_state))
         while heap:
             _, current_state, path = heapq.heappop(heap)
             if current_state == TARGET_STATE:
-                return path + [current_state], len(path), len(visited)
+                return path, len(path) - 1, len(visited)
             zero_idx = current_state.index(0)
             for move in self.get_valid_moves(zero_idx):
                 new_state = current_state[:]
@@ -357,7 +357,7 @@ class PuzzleGUI:
                 if tuple(new_state) not in visited:
                     visited.add(tuple(new_state))
                     new_path = path + [new_state]
-                    f = len(new_path) + self.manhattan_distance(new_state)
+                    f = len(new_path) - 1 + self.manhattan_distance(new_state)
                     heapq.heappush(heap, (f, new_state, new_path))
         return None, -1, len(visited)
 
