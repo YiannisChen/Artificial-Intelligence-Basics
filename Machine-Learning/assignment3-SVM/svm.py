@@ -6,6 +6,11 @@ import os
 import sys
 import time
 
+
+def to_pm1(y):
+    """Map numeric labels to SVM convention: positive -> +1, otherwise -> -1."""
+    return np.where(np.asarray(y) > 0, 1, -1)
+
 class SMO:
     
     def __init__(self, C, tol, kernel='rbf', gamma=None):
@@ -205,7 +210,7 @@ class SMO:
         #Train SVM using SMO algorithm.
         
         m, _ = X_train.shape
-        y_train = np.where(y_train == 0, -1, 1)
+        y_train = to_pm1(y_train)
 
         alpha = np.zeros(m)
         b = np.zeros(1)
@@ -298,7 +303,7 @@ def experiment_linear_svm(data_path, C_values=[0.1, 1, 10, 100]):
     #Run experiments with linear SVM.
     data = pd.read_csv(data_path)
     X = data[['X1', 'X2']].values
-    y = data['y'].values
+    y = to_pm1(data['y'].values)
     
     ensure_output_dir()
     
@@ -319,7 +324,7 @@ def experiment_rbf_svm(data_path, C_values=[0.1, 1, 10, 100], gamma_values=[0.01
     #Run experiments with RBF SVM.
     data = pd.read_csv(data_path)
     X = data[['X1', 'X2']].values
-    y = data['y'].values
+    y = to_pm1(data['y'].values)
     
     ensure_output_dir()
     
