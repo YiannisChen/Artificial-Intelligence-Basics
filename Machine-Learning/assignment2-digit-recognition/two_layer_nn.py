@@ -69,9 +69,10 @@ class Neural_Network(object):
     def train(self, input_data, label_data, epochs):
         """Train network using non-vectorized approach"""
         accuracies = []
+        sample_count = input_data.shape[1]
         
         for epoch in range(epochs):
-            for i in range(60000):
+            for i in range(sample_count):
                 # Forward pass
                 z1, a1 = self.forward_propagation(input_data[:, i].reshape(-1, 1), self.w1, self.b1)
                 z2, a2 = self.forward_propagation(a1, self.w2, self.b2)
@@ -95,6 +96,7 @@ class Neural_Network(object):
     def train_vector(self, input_data, label_data, epochs):
         """Train network using vectorized approach"""
         accuracies = []
+        sample_count = input_data.shape[1]
         
         for epoch in range(epochs):
             # Forward pass
@@ -106,10 +108,10 @@ class Neural_Network(object):
             dz1 = np.dot(self.w2.T, dz2) * a1 * (1 - a1)
             
             # Update parameters
-            self.w2 -= self.learningrate * np.dot(dz2, a1.T) / 60000
-            self.b2 -= self.learningrate * np.sum(dz2, axis=1, keepdims=True) / 60000
-            self.w1 -= self.learningrate * np.dot(dz1, input_data.T) / 60000
-            self.b1 -= self.learningrate * np.sum(dz1, axis=1, keepdims=True) / 60000
+            self.w2 -= self.learningrate * np.dot(dz2, a1.T) / sample_count
+            self.b2 -= self.learningrate * np.sum(dz2, axis=1, keepdims=True) / sample_count
+            self.w1 -= self.learningrate * np.dot(dz1, input_data.T) / sample_count
+            self.b1 -= self.learningrate * np.sum(dz1, axis=1, keepdims=True) / sample_count
             
             accuracy = self.evaluate(input_data, label_data)
             accuracies.append(accuracy)
@@ -131,12 +133,13 @@ class Neural_Network(object):
     def predict(self, input_data, label):
         """Predict using non-vectorized approach"""
         precision = 0
-        for i in range(10000):
+        sample_count = input_data.shape[1]
+        for i in range(sample_count):
             z1, a1 = self.forward_propagation(input_data[:, i].reshape(-1, 1), self.w1, self.b1)
             z2, a2 = self.forward_propagation(a1, self.w2, self.b2)
             if np.argmax(a2) == label[i]:
                 precision += 1
-        accuracy = 100 * precision / 10000
+        accuracy = 100 * precision / sample_count
         print(f'Test accuracy: {accuracy:.2f}%')
         return accuracy
 
@@ -177,4 +180,4 @@ def main():
     network.predict_vector(x_test, y_test)
 
 if __name__ == "__main__":
-    main() 
+    main()
