@@ -1,8 +1,8 @@
 # AI & Machine Learning Coursework
 
-This repository contains coursework from my undergraduate Artificial Intelligence and Machine Learning classes.
+This repository brings together assignments from my undergraduate Artificial Intelligence and Machine Learning courses.
 
-It includes search, game-tree methods, regression, neural networks, SVMs, clustering, and other experiments from those courses. I kept the repository because it is a useful record of the foundations I learned and the problems I spent time working through.
+The coursework moves from classical search and game-playing algorithms to regression, neural networks, support vector machines, and clustering. Across the assignments, I worked with the algorithms both at the implementation level and through experiments on parameters, optimization behavior, and model performance.
 
 ## What I worked on
 
@@ -84,9 +84,9 @@ python3 svm.py linear
 
 ## Notes
 
-Some assignments began with instructor-provided starter code, reference implementations, or course materials. I used them to work through algorithms, complete and modify exercises, debug code, and compare approaches.
+Some assignments use instructor-provided starter code, course materials, or reference implementations. The repository preserves them in the form I used while completing the coursework and experiments.
 
 - `Intro-to-AI/gobang_AI/graphics.py` is John Zelle's Simple Object Oriented Graphics Library, version 5.0, distributed under the GPL as noted in its source header.
-- `Intro-to-AI/NN_digit_recognition/mnist_NN.py` is a course/reference-derived exercise.
-- The decision-tree classifier exercise uses scikit-learn, and the LeNet exercise uses PyTorch and torchvision.
-- The datasets used by these assignments come from external course or public sources and are not my original datasets.
+- `Intro-to-AI/NN_digit_recognition/mnist_NN.py` follows course/reference material.
+- The decision-tree exercise uses scikit-learn, while the LeNet exercise uses PyTorch and torchvision.
+- Datasets are course or public datasets and are not part of this repository's original work.
